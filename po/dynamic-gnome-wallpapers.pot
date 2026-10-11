@@ -1,0 +1,394 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the dynamic-gnome-wallpapers package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dynamic-gnome-wallpapers\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-11 17:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: extension/extension.js:27
+msgid "Manage and Create Wallpapers…"
+msgstr ""
+
+#: extension/extension.js:47
+msgid "No Dynamic Wallpapers"
+msgstr ""
+
+#: extension/lib/catalog.js:95
+msgid "The “unzip” command is missing, install it to download wallpapers."
+msgstr ""
+
+#: extension/lib/catalog.js:101
+msgid "extraction failed"
+msgstr ""
+
+#: extension/lib/catalog.js:132
+msgid "Invalid archive: {file} not found"
+msgstr ""
+
+#: extension/lib/creatorPage.js:25
+msgid "When this variant is fully shown"
+msgstr ""
+
+#: extension/lib/creatorPage.js:26
+msgid "Create Dynamic Wallpaper"
+msgstr ""
+
+#: extension/lib/creatorPage.js:69
+msgid "Create"
+msgstr ""
+
+#: extension/lib/creatorPage.js:97
+msgid "Source Image"
+msgstr ""
+
+#: extension/lib/creatorPage.js:98
+msgid ""
+"Each variant is a copy of this image with its own color tone, shown at its "
+"own hour."
+msgstr ""
+
+#: extension/lib/creatorPage.js:107
+msgid "Drop an Image Here"
+msgstr ""
+
+#: extension/lib/creatorPage.js:109
+msgid "JPEG, PNG, WebP… The original resolution is kept."
+msgstr ""
+
+#: extension/lib/creatorPage.js:115
+msgid "Choose an Image…"
+msgstr ""
+
+#: extension/lib/creatorPage.js:141
+msgid "Images"
+msgstr ""
+
+#: extension/lib/creatorPage.js:145
+msgid "Choose an Image"
+msgstr ""
+
+#: extension/lib/creatorPage.js:159
+msgid "Only local files are supported"
+msgstr ""
+
+#: extension/lib/creatorPage.js:165
+msgid "Unreadable image: {error}"
+msgstr ""
+
+#: extension/lib/creatorPage.js:175
+msgid "{width} × {height} px · drop another image to replace it"
+msgstr ""
+
+#: extension/lib/creatorPage.js:195
+msgid "Preview"
+msgstr ""
+
+#: extension/lib/creatorPage.js:210
+msgid "Simulate a Day"
+msgstr ""
+
+#: extension/lib/creatorPage.js:211
+msgid "Preview the wallpaper at the chosen time, transitions included"
+msgstr ""
+
+#: extension/lib/creatorPage.js:241
+msgid "Play the Day"
+msgstr ""
+
+#: extension/lib/creatorPage.js:247
+msgid "Time"
+msgstr ""
+
+#: extension/lib/creatorPage.js:322
+msgid "Variants"
+msgstr ""
+
+#: extension/lib/creatorPage.js:323
+msgid "Select a variant to preview it and adjust its tone."
+msgstr ""
+
+#: extension/lib/creatorPage.js:327
+msgid "Add a Variant"
+msgstr ""
+
+#: extension/lib/creatorPage.js:329
+msgid "Restore Default Variants"
+msgstr ""
+
+#: extension/lib/creatorPage.js:409
+msgid "Variant {number}"
+msgstr ""
+
+#: extension/lib/creatorPage.js:430
+msgid "Variant Tone"
+msgstr ""
+
+#: extension/lib/creatorPage.js:432
+msgid "Neutral"
+msgstr ""
+
+#: extension/lib/creatorPage.js:432
+msgid "Reset the tone (original image)"
+msgstr ""
+
+#: extension/lib/creatorPage.js:440
+msgid "Name"
+msgstr ""
+
+#: extension/lib/creatorPage.js:444
+msgid "Untitled"
+msgstr ""
+
+#: extension/lib/creatorPage.js:453
+msgid "Hour"
+msgstr ""
+
+#: extension/lib/creatorPage.js:465
+msgid "Brightness"
+msgstr ""
+
+#: extension/lib/creatorPage.js:465
+msgid "Darkens or lightens the image"
+msgstr ""
+
+#: extension/lib/creatorPage.js:466
+msgid "Contrast"
+msgstr ""
+
+#: extension/lib/creatorPage.js:467
+msgid "Saturation"
+msgstr ""
+
+#: extension/lib/creatorPage.js:467
+msgid "0 = black and white"
+msgstr ""
+
+#: extension/lib/creatorPage.js:468
+msgid "Tint Strength"
+msgstr ""
+
+#: extension/lib/creatorPage.js:484 extension/lib/creatorPage.js:500
+msgid "Tint Color"
+msgstr ""
+
+#: extension/lib/creatorPage.js:501
+msgid "Soft light blend: a mid gray is neutral"
+msgstr ""
+
+#: extension/lib/creatorPage.js:506
+msgid "Remove This Variant"
+msgstr ""
+
+#: extension/lib/creatorPage.js:522
+msgid "Tone of “{name}”"
+msgstr ""
+
+#: extension/lib/creatorPage.js:527
+msgid "⚠ Another variant already uses this hour"
+msgstr ""
+
+#: extension/lib/creatorPage.js:541
+msgid "Creation"
+msgstr ""
+
+#: extension/lib/creatorPage.js:543
+msgid "Wallpaper Name"
+msgstr ""
+
+#: extension/lib/creatorPage.js:547
+msgid "Transition Length (minutes)"
+msgstr ""
+
+#: extension/lib/creatorPage.js:548
+msgid "Fade between two variants, capped by the gap between their hours"
+msgstr ""
+
+#: extension/lib/creatorPage.js:553
+msgid "Apply After Creation"
+msgstr ""
+
+#: extension/lib/creatorPage.js:564
+msgid "Could not create the wallpaper: {error}"
+msgstr ""
+
+#: extension/lib/creatorPage.js:578
+msgid "Give the wallpaper a name"
+msgstr ""
+
+#: extension/lib/creatorPage.js:584
+msgid "Two variants can’t share the same hour"
+msgstr ""
+
+#: extension/lib/creatorPage.js:588
+msgid "“{name}” Already Exists"
+msgstr ""
+
+#: extension/lib/creatorPage.js:589
+msgid "The existing wallpaper will be replaced."
+msgstr ""
+
+#: extension/lib/creatorPage.js:589
+msgid "Replace"
+msgstr ""
+
+#: extension/lib/creatorPage.js:603
+msgid "Creating… {current}/{total}"
+msgstr ""
+
+#: extension/lib/creatorPage.js:624
+msgid "“{name}” created and applied"
+msgstr ""
+
+#: extension/lib/creatorPage.js:624
+msgid "“{name}” created"
+msgstr ""
+
+#: extension/lib/galleryPage.js:44
+msgid "Cancel"
+msgstr ""
+
+#: extension/lib/galleryPage.js:62
+msgid "Wallpapers"
+msgstr ""
+
+#: extension/lib/galleryPage.js:67
+msgid "Installed"
+msgstr ""
+
+#: extension/lib/galleryPage.js:68
+msgid ""
+"Dynamic wallpapers available on this system. They also show up in Settings › "
+"Appearance."
+msgstr ""
+
+#: extension/lib/galleryPage.js:73
+msgid "Catalog"
+msgstr ""
+
+#: extension/lib/galleryPage.js:74
+msgid "Ready-made wallpapers, downloaded from the project CDN."
+msgstr ""
+
+#: extension/lib/galleryPage.js:103
+msgid "No Dynamic Wallpapers Installed"
+msgstr ""
+
+#: extension/lib/galleryPage.js:104
+msgid "Install one from the catalog or create your own."
+msgstr ""
+
+#: extension/lib/galleryPage.js:123
+msgid "User"
+msgstr ""
+
+#: extension/lib/galleryPage.js:123
+msgid "System"
+msgstr ""
+
+#: extension/lib/galleryPage.js:124
+msgid "Active"
+msgstr ""
+
+#: extension/lib/galleryPage.js:135
+msgid "Current Wallpaper"
+msgstr ""
+
+#: extension/lib/galleryPage.js:139
+msgid "Apply"
+msgstr ""
+
+#: extension/lib/galleryPage.js:145
+msgid "“{name}” applied"
+msgstr ""
+
+#: extension/lib/galleryPage.js:154 extension/lib/galleryPage.js:162
+msgid "Remove"
+msgstr ""
+
+#: extension/lib/galleryPage.js:160
+msgid "Remove “{name}”?"
+msgstr ""
+
+#: extension/lib/galleryPage.js:161
+msgid "The images and files of this wallpaper will be deleted."
+msgstr ""
+
+#: extension/lib/galleryPage.js:167
+msgid "“{name}” removed"
+msgstr ""
+
+#: extension/lib/galleryPage.js:169
+msgid "Could not remove: {error}"
+msgstr ""
+
+#: extension/lib/galleryPage.js:194
+msgid "Code: {code}"
+msgstr ""
+
+#: extension/lib/galleryPage.js:195
+msgid "⚠ over 500 MB"
+msgstr ""
+
+#: extension/lib/galleryPage.js:207
+msgid "Credits: {url}"
+msgstr ""
+
+#: extension/lib/galleryPage.js:220 extension/lib/galleryPage.js:228
+msgid "Install"
+msgstr ""
+
+#: extension/lib/galleryPage.js:228
+msgid "Reinstall"
+msgstr ""
+
+#: extension/lib/galleryPage.js:235
+msgid "Connecting…"
+msgstr ""
+
+#: extension/lib/galleryPage.js:242
+msgid "Downloading…"
+msgstr ""
+
+#: extension/lib/galleryPage.js:249
+msgid "“{name}” installed"
+msgstr ""
+
+#: extension/lib/galleryPage.js:253
+msgid "Could not install “{name}”: {error}"
+msgstr ""
+
+#: extension/lib/tone.js:19
+msgid "Night"
+msgstr ""
+
+#: extension/lib/tone.js:20
+msgid "Dawn"
+msgstr ""
+
+#: extension/lib/tone.js:21
+msgid "Morning"
+msgstr ""
+
+#: extension/lib/tone.js:22
+msgid "Noon"
+msgstr ""
+
+#: extension/lib/tone.js:23
+msgid "Sunset"
+msgstr ""
+
+#: extension/lib/tone.js:24
+msgid "Dusk"
+msgstr ""
