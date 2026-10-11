@@ -46,7 +46,7 @@ export const CATALOG = [
 let session = null;
 
 function getSession() {
-    session ??= new Soup.Session({user_agent: 'dynamic-gnome-wallpapers-extension'});
+    session ??= new Soup.Session({user_agent: 'gnome-dynamic-wallpapers-extension'});
     return session;
 }
 
@@ -77,7 +77,7 @@ export async function isAvailable(entry, cancellable = null) {
 
 /** Downloads (once) the animated preview of a catalog entry, returns its path. */
 export async function fetchPreview(entry, cancellable = null) {
-    const cacheDir = GLib.build_filenamev([GLib.get_user_cache_dir(), 'dynamic-gnome-wallpapers', 'previews']);
+    const cacheDir = GLib.build_filenamev([GLib.get_user_cache_dir(), 'gnome-dynamic-wallpapers', 'previews']);
     const path = GLib.build_filenamev([cacheDir, `${entry.code}.gif`]);
     if (GLib.file_test(path, GLib.FileTest.EXISTS))
         return path;

@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the dynamic-gnome-wallpapers package.
+# This file is distributed under the same license as the gnome-dynamic-wallpapers package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: dynamic-gnome-wallpapers\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: gnome-dynamic-wallpapers\n"
+"Report-Msgid-Bugs-To: https://github.com/leoyd/gnome-dynamic-wallpapers-extension/issues\n"
 "POT-Creation-Date: 2026-10-11 17:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"

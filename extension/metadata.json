@@ -1,9 +1,9 @@
 {
-  "uuid": "dynamic-gnome-wallpapers@leoyd.github.io",
+  "uuid": "gnome-dynamic-wallpapers@leoyd.github.io",
   "name": "Dynamic Wallpapers",
   "description": "Wallpapers that change throughout the day. Install them from the catalog, or create one from any image by giving it a different color tone for each time of day.",
   "shell-version": ["47", "48", "49", "50", "51"],
   "url": "https://github.com/leoyd/gnome-dynamic-wallpapers-extension",
-  "gettext-domain": "dynamic-gnome-wallpapers",
+  "gettext-domain": "gnome-dynamic-wallpapers",
   "version-name": "1.0"
 }

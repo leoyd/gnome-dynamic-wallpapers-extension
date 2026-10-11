@@ -1,7 +1,7 @@
-UUID := dynamic-gnome-wallpapers@leoyd.github.io
+UUID := gnome-dynamic-wallpapers@leoyd.github.io
 SRC  := extension
 ZIP  := build/$(UUID).shell-extension.zip
-DOMAIN := dynamic-gnome-wallpapers
+DOMAIN := gnome-dynamic-wallpapers
 POT  := po/$(DOMAIN).pot
 JS   := $(shell find $(SRC) -name '*.js' | sort)
 
@@ -26,7 +26,7 @@ prefs:
 # Regenerate the template after changing UI strings, then update-po.
 pot:
 	xgettext --from-code=UTF-8 --language=JavaScript --keyword=_ --keyword=N_ \
-		--add-comments=Translators --package-name=$(DOMAIN) --output=$(POT) $(JS)
+		--add-comments=Translators --package-name=$(DOMAIN) --msgid-bugs-address=https://github.com/leoyd/gnome-dynamic-wallpapers-extension/issues --output=$(POT) $(JS)
 
 update-po: pot
 	for po in po/*.po; do msgmerge --update --backup=none $$po $(POT); done

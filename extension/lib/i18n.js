@@ -3,7 +3,7 @@
 
 import Gettext from 'gettext';
 
-export const DOMAIN = 'dynamic-gnome-wallpapers';
+export const DOMAIN = 'gnome-dynamic-wallpapers';
 
 export const _ = text => Gettext.dgettext(DOMAIN, text);
 

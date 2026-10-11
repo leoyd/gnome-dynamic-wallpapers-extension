@@ -60,7 +60,7 @@ Then enable it:
 > **X11**: you can instead restart GNOME Shell with <kbd>Alt</kbd>+<kbd>F2</kbd>, `r`, <kbd>Enter</kbd>.
 
 ```bash
-gnome-extensions enable dynamic-gnome-wallpapers@leoyd.github.io
+gnome-extensions enable gnome-dynamic-wallpapers@leoyd.github.io
 ```
 
 You can also enable it from the **Extensions** app. To update, pull the latest changes and run `make install` again.
@@ -139,7 +139,7 @@ make prefs      # open the preferences window
 make update-po  # regenerate po/*.pot and merge it into po/*.po after changing UI strings
 ```
 
-To add a translation, copy `po/dynamic-gnome-wallpapers.pot` to `po/<lang>.po` and translate it.
+To add a translation, copy `po/gnome-dynamic-wallpapers.pot` to `po/<lang>.po` and translate it.
 
 ## Credits
 
