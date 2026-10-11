@@ -3,7 +3,7 @@
   "name": "Dynamic Wallpapers",
   "description": "Wallpapers that change throughout the day. Install them from the catalog, or create one from any image by giving it a different color tone for each time of day.",
   "shell-version": ["47", "48", "49", "50", "51"],
-  "url": "https://github.com/leoyd/dynamic-gnome-wallpapers",
+  "url": "https://github.com/leoyd/gnome-dynamic-wallpapers-extension",
   "gettext-domain": "dynamic-gnome-wallpapers",
   "version-name": "1.0"
 }

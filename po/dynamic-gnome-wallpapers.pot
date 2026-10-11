@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-gnome-wallpapers\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-11 17:40+0200\n"
+"POT-Creation-Date: 2026-10-11 17:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,15 +25,15 @@ msgstr ""
 msgid "No Dynamic Wallpapers"
 msgstr ""
 
-#: extension/lib/catalog.js:95
+#: extension/lib/catalog.js:121
 msgid "The “unzip” command is missing, install it to download wallpapers."
 msgstr ""
 
-#: extension/lib/catalog.js:101
+#: extension/lib/catalog.js:127
 msgid "extraction failed"
 msgstr ""
 
-#: extension/lib/catalog.js:132
+#: extension/lib/catalog.js:158
 msgid "Invalid archive: {file} not found"
 msgstr ""
 
@@ -305,103 +305,105 @@ msgid ""
 "Appearance."
 msgstr ""
 
-#: extension/lib/galleryPage.js:75
+#: extension/lib/galleryPage.js:76
 msgid "Catalog"
 msgstr ""
 
-#: extension/lib/galleryPage.js:76
-msgid "Ready-made wallpapers, downloaded from the project CDN."
+#: extension/lib/galleryPage.js:77
+msgid ""
+"Ready-made wallpapers from the {project} project by {author}. Each artist is "
+"credited on its row."
 msgstr ""
 
-#: extension/lib/galleryPage.js:105
-msgid "No Dynamic Wallpapers Installed"
-msgstr ""
-
-#: extension/lib/galleryPage.js:106
-msgid "Install one from the catalog or create your own."
-msgstr ""
-
-#: extension/lib/galleryPage.js:125
-msgid "User"
-msgstr ""
-
-#: extension/lib/galleryPage.js:125
-msgid "System"
-msgstr ""
-
-#: extension/lib/galleryPage.js:126
-msgid "Active"
-msgstr ""
-
-#: extension/lib/galleryPage.js:137
-msgid "Current Wallpaper"
-msgstr ""
-
-#: extension/lib/galleryPage.js:141
-msgid "Apply"
-msgstr ""
-
-#: extension/lib/galleryPage.js:147
-msgid "“{name}” applied"
-msgstr ""
-
-#: extension/lib/galleryPage.js:156
-msgid "Edit"
-msgstr ""
-
-#: extension/lib/galleryPage.js:167 extension/lib/galleryPage.js:175
-msgid "Remove"
-msgstr ""
-
-#: extension/lib/galleryPage.js:173
-msgid "Remove “{name}”?"
-msgstr ""
-
-#: extension/lib/galleryPage.js:174
-msgid "The images and files of this wallpaper will be deleted."
-msgstr ""
-
-#: extension/lib/galleryPage.js:181
-msgid "“{name}” removed"
-msgstr ""
-
-#: extension/lib/galleryPage.js:183
-msgid "Could not remove: {error}"
-msgstr ""
-
-#: extension/lib/galleryPage.js:208
-msgid "Code: {code}"
-msgstr ""
-
-#: extension/lib/galleryPage.js:209
-msgid "⚠ over 500 MB"
-msgstr ""
-
-#: extension/lib/galleryPage.js:221
+#: extension/lib/galleryPage.js:83 extension/lib/galleryPage.js:241
 msgid "Credits: {url}"
 msgstr ""
 
-#: extension/lib/galleryPage.js:234 extension/lib/galleryPage.js:242
+#: extension/lib/galleryPage.js:117
+msgid "No Dynamic Wallpapers Installed"
+msgstr ""
+
+#: extension/lib/galleryPage.js:118
+msgid "Install one from the catalog or create your own."
+msgstr ""
+
+#: extension/lib/galleryPage.js:137
+msgid "User"
+msgstr ""
+
+#: extension/lib/galleryPage.js:137
+msgid "System"
+msgstr ""
+
+#: extension/lib/galleryPage.js:138
+msgid "Active"
+msgstr ""
+
+#: extension/lib/galleryPage.js:149
+msgid "Current Wallpaper"
+msgstr ""
+
+#: extension/lib/galleryPage.js:153
+msgid "Apply"
+msgstr ""
+
+#: extension/lib/galleryPage.js:159
+msgid "“{name}” applied"
+msgstr ""
+
+#: extension/lib/galleryPage.js:168
+msgid "Edit"
+msgstr ""
+
+#: extension/lib/galleryPage.js:179 extension/lib/galleryPage.js:187
+msgid "Remove"
+msgstr ""
+
+#: extension/lib/galleryPage.js:185
+msgid "Remove “{name}”?"
+msgstr ""
+
+#: extension/lib/galleryPage.js:186
+msgid "The images and files of this wallpaper will be deleted."
+msgstr ""
+
+#: extension/lib/galleryPage.js:193
+msgid "“{name}” removed"
+msgstr ""
+
+#: extension/lib/galleryPage.js:195
+msgid "Could not remove: {error}"
+msgstr ""
+
+#: extension/lib/galleryPage.js:222
+msgid "Code: {code}"
+msgstr ""
+
+#: extension/lib/galleryPage.js:223
+msgid "⚠ over 500 MB"
+msgstr ""
+
+#: extension/lib/galleryPage.js:254 extension/lib/galleryPage.js:262
 msgid "Install"
 msgstr ""
 
-#: extension/lib/galleryPage.js:242
+#: extension/lib/galleryPage.js:262
 msgid "Reinstall"
 msgstr ""
 
-#: extension/lib/galleryPage.js:249
+#: extension/lib/galleryPage.js:269
 msgid "Connecting…"
 msgstr ""
 
-#: extension/lib/galleryPage.js:256
+#: extension/lib/galleryPage.js:276
 msgid "Downloading…"
 msgstr ""
 
-#: extension/lib/galleryPage.js:263
+#: extension/lib/galleryPage.js:283
 msgid "“{name}” installed"
 msgstr ""
 
-#: extension/lib/galleryPage.js:267
+#: extension/lib/galleryPage.js:287
 msgid "Could not install “{name}”: {error}"
 msgstr ""
 

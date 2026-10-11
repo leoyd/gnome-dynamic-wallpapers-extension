@@ -5,7 +5,7 @@
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
 
-// Placeholder used by the CDN zips (see install.sh) for the install prefix.
+// Placeholder used by the CDN zips for the install prefix.
 export const PLACEHOLDER = '__LOCATION__';
 
 const BACKGROUND_SCHEMA = 'org.gnome.desktop.background';

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-gnome-wallpapers\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-11 17:40+0200\n"
+"POT-Creation-Date: 2026-10-11 17:51+0200\n"
 "PO-Revision-Date: 2026-10-11 17:20+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: French\n"
@@ -26,17 +26,17 @@ msgstr "Gérer et créer des fonds d’écran…"
 msgid "No Dynamic Wallpapers"
 msgstr "Aucun fond d’écran dynamique"
 
-#: extension/lib/catalog.js:95
+#: extension/lib/catalog.js:121
 msgid "The “unzip” command is missing, install it to download wallpapers."
 msgstr ""
 "La commande « unzip » est introuvable, installez-la pour télécharger des "
 "fonds d’écran."
 
-#: extension/lib/catalog.js:101
+#: extension/lib/catalog.js:127
 msgid "extraction failed"
 msgstr "échec de l’extraction"
 
-#: extension/lib/catalog.js:132
+#: extension/lib/catalog.js:158
 msgid "Invalid archive: {file} not found"
 msgstr "Archive invalide : {file} introuvable"
 
@@ -312,103 +312,107 @@ msgstr ""
 "Fonds d’écran dynamiques disponibles sur ce système. Ils apparaissent aussi "
 "dans Paramètres › Apparence."
 
-#: extension/lib/galleryPage.js:75
+#: extension/lib/galleryPage.js:76
 msgid "Catalog"
 msgstr "Catalogue"
 
-#: extension/lib/galleryPage.js:76
-msgid "Ready-made wallpapers, downloaded from the project CDN."
-msgstr "Fonds d’écran prêts à l’emploi, téléchargés depuis le CDN du projet."
+#: extension/lib/galleryPage.js:77
+msgid ""
+"Ready-made wallpapers from the {project} project by {author}. Each artist is "
+"credited on its row."
+msgstr ""
+"Fonds d’écran prêts à l’emploi du projet {project} de {author}. Chaque "
+"artiste est crédité sur sa ligne."
 
-#: extension/lib/galleryPage.js:105
-msgid "No Dynamic Wallpapers Installed"
-msgstr "Aucun fond d’écran dynamique installé"
-
-#: extension/lib/galleryPage.js:106
-msgid "Install one from the catalog or create your own."
-msgstr "Installez-en un depuis le catalogue ou créez le vôtre."
-
-#: extension/lib/galleryPage.js:125
-msgid "User"
-msgstr "Utilisateur"
-
-#: extension/lib/galleryPage.js:125
-msgid "System"
-msgstr "Système"
-
-#: extension/lib/galleryPage.js:126
-msgid "Active"
-msgstr "Actif"
-
-#: extension/lib/galleryPage.js:137
-msgid "Current Wallpaper"
-msgstr "Fond d’écran actuel"
-
-#: extension/lib/galleryPage.js:141
-msgid "Apply"
-msgstr "Appliquer"
-
-#: extension/lib/galleryPage.js:147
-msgid "“{name}” applied"
-msgstr "« {name} » appliqué"
-
-#: extension/lib/galleryPage.js:156
-msgid "Edit"
-msgstr "Modifier"
-
-#: extension/lib/galleryPage.js:167 extension/lib/galleryPage.js:175
-msgid "Remove"
-msgstr "Supprimer"
-
-#: extension/lib/galleryPage.js:173
-msgid "Remove “{name}”?"
-msgstr "Supprimer « {name} » ?"
-
-#: extension/lib/galleryPage.js:174
-msgid "The images and files of this wallpaper will be deleted."
-msgstr "Les images et fichiers de ce fond d’écran seront supprimés."
-
-#: extension/lib/galleryPage.js:181
-msgid "“{name}” removed"
-msgstr "« {name} » supprimé"
-
-#: extension/lib/galleryPage.js:183
-msgid "Could not remove: {error}"
-msgstr "Suppression impossible : {error}"
-
-#: extension/lib/galleryPage.js:208
-msgid "Code: {code}"
-msgstr "Code : {code}"
-
-#: extension/lib/galleryPage.js:209
-msgid "⚠ over 500 MB"
-msgstr "⚠ plus de 500 Mo"
-
-#: extension/lib/galleryPage.js:221
+#: extension/lib/galleryPage.js:83 extension/lib/galleryPage.js:241
 msgid "Credits: {url}"
 msgstr "Crédits : {url}"
 
-#: extension/lib/galleryPage.js:234 extension/lib/galleryPage.js:242
+#: extension/lib/galleryPage.js:117
+msgid "No Dynamic Wallpapers Installed"
+msgstr "Aucun fond d’écran dynamique installé"
+
+#: extension/lib/galleryPage.js:118
+msgid "Install one from the catalog or create your own."
+msgstr "Installez-en un depuis le catalogue ou créez le vôtre."
+
+#: extension/lib/galleryPage.js:137
+msgid "User"
+msgstr "Utilisateur"
+
+#: extension/lib/galleryPage.js:137
+msgid "System"
+msgstr "Système"
+
+#: extension/lib/galleryPage.js:138
+msgid "Active"
+msgstr "Actif"
+
+#: extension/lib/galleryPage.js:149
+msgid "Current Wallpaper"
+msgstr "Fond d’écran actuel"
+
+#: extension/lib/galleryPage.js:153
+msgid "Apply"
+msgstr "Appliquer"
+
+#: extension/lib/galleryPage.js:159
+msgid "“{name}” applied"
+msgstr "« {name} » appliqué"
+
+#: extension/lib/galleryPage.js:168
+msgid "Edit"
+msgstr "Modifier"
+
+#: extension/lib/galleryPage.js:179 extension/lib/galleryPage.js:187
+msgid "Remove"
+msgstr "Supprimer"
+
+#: extension/lib/galleryPage.js:185
+msgid "Remove “{name}”?"
+msgstr "Supprimer « {name} » ?"
+
+#: extension/lib/galleryPage.js:186
+msgid "The images and files of this wallpaper will be deleted."
+msgstr "Les images et fichiers de ce fond d’écran seront supprimés."
+
+#: extension/lib/galleryPage.js:193
+msgid "“{name}” removed"
+msgstr "« {name} » supprimé"
+
+#: extension/lib/galleryPage.js:195
+msgid "Could not remove: {error}"
+msgstr "Suppression impossible : {error}"
+
+#: extension/lib/galleryPage.js:222
+msgid "Code: {code}"
+msgstr "Code : {code}"
+
+#: extension/lib/galleryPage.js:223
+msgid "⚠ over 500 MB"
+msgstr "⚠ plus de 500 Mo"
+
+#: extension/lib/galleryPage.js:254 extension/lib/galleryPage.js:262
 msgid "Install"
 msgstr "Installer"
 
-#: extension/lib/galleryPage.js:242
+#: extension/lib/galleryPage.js:262
 msgid "Reinstall"
 msgstr "Réinstaller"
 
-#: extension/lib/galleryPage.js:249
+#: extension/lib/galleryPage.js:269
 msgid "Connecting…"
 msgstr "Connexion…"
 
-#: extension/lib/galleryPage.js:256
+#: extension/lib/galleryPage.js:276
 msgid "Downloading…"
 msgstr "Téléchargement…"
 
-#: extension/lib/galleryPage.js:263
+#: extension/lib/galleryPage.js:283
 msgid "“{name}” installed"
 msgstr "« {name} » installé"
 
-#: extension/lib/galleryPage.js:267
+#: extension/lib/galleryPage.js:287
 msgid "Could not install “{name}”: {error}"
 msgstr "Échec de l’installation de « {name} » : {error}"
 

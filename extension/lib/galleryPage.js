@@ -5,7 +5,7 @@ import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk?version=4.0';
 import Adw from 'gi://Adw';
 
-import {CATALOG, fetchPreview, installFromCdn} from './catalog.js';
+import {CATALOG, CATALOG_SOURCE, fetchPreview, installFromCdn, isAvailable} from './catalog.js';
 import {_, format} from './i18n.js';
 import {loadThumbnail} from './image.js';
 import {
@@ -71,10 +71,22 @@ export class GalleryPage {
         });
         this.page.add(this._installedGroup);
 
+        // Hidden until the CDN confirms at least one wallpaper is available.
         this._catalogGroup = new Adw.PreferencesGroup({
             title: _('Catalog'),
-            description: _('Ready-made wallpapers, downloaded from the project CDN.'),
+            description: format(_('Ready-made wallpapers from the {project} project by {author}. Each artist is credited on its row.'),
+                {project: CATALOG_SOURCE.project, author: CATALOG_SOURCE.author}),
+            visible: false,
         });
+        const source = new Gtk.Button({
+            icon_name: 'web-browser-symbolic',
+            tooltip_text: format(_('Credits: {url}'), {url: CATALOG_SOURCE.url}),
+            valign: Gtk.Align.CENTER,
+            css_classes: ['flat'],
+        });
+        source.connect('clicked', () =>
+            new Gtk.UriLauncher({uri: CATALOG_SOURCE.url}).launch(window, null, null));
+        this._catalogGroup.set_header_suffix(source);
         this.page.add(this._catalogGroup);
 
         window.connect('close-request', () => {
@@ -202,7 +214,9 @@ export class GalleryPage {
     }
 
     _makeCatalogRow(entry) {
+        // Wallpapers no longer served by the CDN are silently left hidden.
         const row = new Adw.ActionRow({
+            visible: false,
             title: GLib.markup_escape_text(entry.name, -1),
             subtitle: [
                 format(_('Code: {code}'), {code: entry.code}),
@@ -212,9 +226,15 @@ export class GalleryPage {
 
         const thumb = makeThumbnail();
         row.add_prefix(thumb);
-        fetchPreview(entry, this._cancellable)
-            .then(path => fillThumbnailLater(thumb, path))
-            .catch(() => thumb.set_paintable(null));
+        isAvailable(entry, this._cancellable).then(available => {
+            if (!available)
+                return;
+            row.visible = true;
+            this._catalogGroup.visible = true;
+            fetchPreview(entry, this._cancellable)
+                .then(path => fillThumbnailLater(thumb, path))
+                .catch(() => thumb.set_paintable(null));
+        });
 
         const credit = new Gtk.Button({
             icon_name: 'web-browser-symbolic',

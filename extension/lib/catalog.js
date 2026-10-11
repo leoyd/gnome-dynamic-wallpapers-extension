@@ -1,6 +1,7 @@
-// Catalog of the wallpapers published on the project CDN, and a port of
-// install.sh: download the zip, extract it, replace the location placeholder
-// and copy the files into the user data dir. Preferences process only.
+// Default catalog: the wallpapers of the dynamic-gnome-wallpapers project by
+// Manish Kumar, hosted on its CDN. Installing one downloads the zip, extracts
+// it, replaces the location placeholder and copies the files into the user
+// data dir. Preferences process only.
 
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
@@ -16,6 +17,12 @@ Gio._promisify(Soup.Session.prototype, 'send_async');
 Gio._promisify(Soup.Session.prototype, 'send_and_read_async');
 Gio._promisify(Gio.InputStream.prototype, 'read_bytes_async');
 Gio._promisify(Gio.Subprocess.prototype, 'communicate_utf8_async');
+
+export const CATALOG_SOURCE = {
+    author: 'Manish Kumar',
+    project: 'dynamic-gnome-wallpapers',
+    url: 'https://github.com/manishprivet/dynamic-gnome-wallpapers',
+};
 
 const CDN_URL = 'https://cdn.manishk.dev/v2%2F';
 const PREVIEW_URL = 'https://user-images.githubusercontent.com/54291836/';
@@ -47,6 +54,25 @@ function checkStatus(message) {
     const status = message.get_status();
     if (status !== Soup.Status.OK)
         throw new Error(`HTTP ${status} ${message.get_reason_phrase() ?? ''}`.trim());
+}
+
+function zipUrl(code) {
+    return `${CDN_URL}${encodeURIComponent(code)}.zip`;
+}
+
+/**
+ * Checks that the zip of a catalog entry is still served by the CDN.
+ * Never throws: any network or HTTP problem means unavailable.
+ */
+export async function isAvailable(entry, cancellable = null) {
+    try {
+        const message = Soup.Message.new('HEAD', zipUrl(entry.code));
+        await getSession().send_and_read_async(message, GLib.PRIORITY_LOW, cancellable);
+        const type = message.get_response_headers().get_content_type()[0] ?? '';
+        return message.get_status() === Soup.Status.OK && !type.startsWith('text/');
+    } catch {
+        return false;
+    }
 }
 
 /** Downloads (once) the animated preview of a catalog entry, returns its path. */
@@ -145,7 +171,7 @@ export async function installFromCdn(code, {onProgress = null, cancellable = nul
     try {
         const zipPath = GLib.build_filenamev([tmp, `${code}.zip`]);
         const extractDir = GLib.build_filenamev([tmp, 'content']);
-        await download(CDN_URL + encodeURIComponent(code) + '.zip', zipPath, onProgress, cancellable);
+        await download(zipUrl(code), zipPath, onProgress, cancellable);
         await extract(zipPath, extractDir, cancellable);
 
         const srcDir = findThemeDir(extractDir, code);
