@@ -33,7 +33,13 @@ export default class DynamicWallpapersPreferences extends ExtensionPreferences {
         window.set_default_size(900, 860);
         window.search_enabled = false;
 
-        const gallery = new GalleryPage(window);
+        const gallery = new GalleryPage(window, {
+            onEdit: wallpaper => {
+                if (creator.edit(wallpaper))
+                    window.set_visible_page(creator.page);
+            },
+            onRemoved: wallpaper => creator.forget(wallpaper),
+        });
         const creator = new CreatorPage(window, {onCreated: () => gallery.refresh()});
         window.add(gallery.page);
         window.add(creator.page);

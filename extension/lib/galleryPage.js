@@ -52,8 +52,10 @@ export function confirm(window, heading, body, action) {
 }
 
 export class GalleryPage {
-    constructor(window) {
+    constructor(window, {onEdit, onRemoved}) {
         this._window = window;
+        this._onEdit = onEdit;
+        this._onRemoved = onRemoved;
         this._installedRows = [];
         this._catalogRows = [];
         this._cancellable = new Gio.Cancellable();
@@ -148,6 +150,17 @@ export class GalleryPage {
             row.add_suffix(apply);
         }
 
+        if (wallpaper.editable) {
+            const edit = new Gtk.Button({
+                icon_name: 'document-edit-symbolic',
+                tooltip_text: _('Edit'),
+                valign: Gtk.Align.CENTER,
+                css_classes: ['flat'],
+            });
+            edit.connect('clicked', () => this._onEdit?.(wallpaper));
+            row.add_suffix(edit);
+        }
+
         if (wallpaper.removable) {
             const remove = new Gtk.Button({
                 icon_name: 'user-trash-symbolic',
@@ -164,6 +177,7 @@ export class GalleryPage {
                     return;
                 try {
                     uninstallWallpaper(wallpaper.code);
+                    this._onRemoved?.(wallpaper);
                     this._toast(format(_('“{name}” removed'), {name: wallpaper.name}));
                 } catch (e) {
                     this._toast(format(_('Could not remove: {error}'), {error: e.message}));

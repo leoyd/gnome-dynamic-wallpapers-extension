@@ -13,8 +13,9 @@ import {_, format} from './i18n.js';
 import {imageToPixbuf, imageToTexture, loadSource, pixbufToImage} from './image.js';
 import {NEUTRAL, applyTone, blend, defaultVariants, rgbToHex} from './tone.js';
 import {
-    applyWallpaper, buildSchedule, isInstalled, sanitizeCode, scheduleAt,
-    timedDir, uninstallWallpaper, writeDynamicWallpaper,
+    applyWallpaper, backgroundsDir, buildSchedule, deleteRecursive, isCurrent,
+    isInstalled, readProject, sanitizeCode, scheduleAt, slideshowPath, timedDir,
+    uninstallWallpaper, writeDynamicWallpaper, writeText,
 } from './wallpapers.js';
 
 const PREVIEW_WIDTH = 1280;
@@ -24,6 +25,8 @@ const MAX_VARIANTS = 12;
 
 const HOUR_HINT = () => _('When this variant is fully shown');
 const CREATE_LABEL = () => _('Create Dynamic Wallpaper');
+const SAVE_LABEL = () => _('Save Changes');
+const TONE_KEYS = ['brightness', 'contrast', 'saturation', 'tint', 'tintStrength'];
 
 const formatHour = hours => {
     const h = Math.floor(hours) % 24;
@@ -57,6 +60,9 @@ export class CreatorPage {
         this._window = window;
         this._onCreated = onCreated;
         this._source = null;
+        this._sourcePath = null;
+        // {code, name} of the wallpaper being edited, null when creating one.
+        this._editing = null;
         this._variants = defaultVariants();
         this._selected = this._variants[3];
         this._cache = new Map();
@@ -76,6 +82,10 @@ export class CreatorPage {
         this._buildEditorGroup();
         this._buildCreateGroup();
         this._setLoaded(false);
+
+        this._banner = new Adw.Banner({button_label: _('New Wallpaper')});
+        this._banner.connect('button-clicked', () => this._reset());
+        this.page.banner = this._banner;
 
         window.connect('close-request', () => {
             this._stopPlaying();
@@ -103,10 +113,9 @@ export class CreatorPage {
             spacing: 12,
             css_classes: ['dgw-drop-zone'],
         });
-        this._dropIcon = new Gtk.Image({icon_name: 'folder-pictures-symbolic', pixel_size: 48, css_classes: ['dim-label']});
-        this._dropTitle = new Gtk.Label({label: _('Drop an Image Here'), css_classes: ['title-3'], wrap: true});
+        this._dropIcon = new Gtk.Image({pixel_size: 48, css_classes: ['dim-label']});
+        this._dropTitle = new Gtk.Label({css_classes: ['title-3'], wrap: true});
         this._dropSubtitle = new Gtk.Label({
-            label: _('JPEG, PNG, WebP… The original resolution is kept.'),
             css_classes: ['dim-label'],
             wrap: true,
             justify: Gtk.Justification.CENTER,
@@ -119,6 +128,7 @@ export class CreatorPage {
         choose.connect('clicked', () => this._chooseFile());
         for (const w of [this._dropIcon, this._dropTitle, this._dropSubtitle, choose])
             this._dropZone.append(w);
+        this._resetDropZone();
         group.add(this._dropZone);
 
         // Accept drops anywhere on the page, highlight the drop zone.
@@ -160,15 +170,26 @@ export class CreatorPage {
             return false;
         }
         try {
-            this._source = loadSource(path, PREVIEW_WIDTH, THUMB_WIDTH);
+            this._loadSource(path);
         } catch (e) {
             this._toast(format(_('Unreadable image: {error}'), {error: e.message}));
             return false;
         }
+        // When editing, a new image only replaces the source.
+        if (!this._editing) {
+            const base = GLib.path_get_basename(path).replace(/\.[^.]+$/, '');
+            this._nameRow.text = base.replace(/[_-]+/g, ' ');
+        }
+        this._rebuildStrip();
+        this._scheduleRefresh();
+        return true;
+    }
+
+    _loadSource(path) {
+        this._source = loadSource(path, PREVIEW_WIDTH, THUMB_WIDTH);
+        this._sourcePath = path;
         this._cache.clear();
 
-        const base = GLib.path_get_basename(path).replace(/\.[^.]+$/, '');
-        this._nameRow.text = base.replace(/[_-]+/g, ' ');
         this._dropIcon.icon_name = 'image-x-generic-symbolic';
         this._dropTitle.label = GLib.path_get_basename(path);
         this._dropSubtitle.label =
@@ -176,11 +197,87 @@ export class CreatorPage {
                 width: this._source.full.get_width(),
                 height: this._source.full.get_height(),
             });
-
         this._setLoaded(true);
+    }
+
+    _resetDropZone() {
+        this._dropIcon.icon_name = 'folder-pictures-symbolic';
+        this._dropTitle.label = _('Drop an Image Here');
+        this._dropSubtitle.label = _('JPEG, PNG, WebP… The original resolution is kept.');
+    }
+
+    /**
+     * Opens a wallpaper made with this page to edit it.
+     *
+     * @returns {boolean} whether it could be opened
+     */
+    edit(wallpaper) {
+        if (this._busy)
+            return false;
+        const project = readProject(wallpaper.code);
+        const valid = project?.variants.length >= MIN_VARIANTS && project.variants.length <= MAX_VARIANTS;
+        try {
+            if (!valid)
+                throw new Error(_('missing or invalid project'));
+            this._loadSource(project.source);
+        } catch (e) {
+            this._toast(format(_('Could not open “{name}”: {error}'), {name: wallpaper.name, error: e.message}));
+            return false;
+        }
+
+        this._stopPlaying();
+        this._variants = project.variants.map((v, i) => {
+            const variant = {label: String(v.label ?? format(_('Variant {number}'), {number: i + 1})), hour: 0, ...NEUTRAL};
+            for (const key of TONE_KEYS) {
+                if (typeof v[key] === typeof NEUTRAL[key])
+                    variant[key] = v[key];
+            }
+            if (Number.isInteger(v.hour))
+                variant.hour = Math.min(23, Math.max(0, v.hour));
+            return variant;
+        });
+        this._selected = this._variants[Math.floor(this._variants.length / 2)];
+        this._nameRow.text = project.name ?? wallpaper.name;
+        if (typeof project.transitionMinutes === 'number')
+            this._transitionRow.value = project.transitionMinutes;
+        this._setEditing({code: wallpaper.code, name: this._nameRow.text});
+
         this._rebuildStrip();
         this._scheduleRefresh();
         return true;
+    }
+
+    _setEditing(editing) {
+        this._editing = editing;
+        this._banner.revealed = Boolean(editing);
+        if (editing)
+            this._banner.title = format(_('Editing “{name}”'), {name: editing.name});
+        this._applyRow.title = editing ? _('Apply After Saving') : _('Apply After Creation');
+        if (!this._busy)
+            this._createButton.label = editing ? SAVE_LABEL() : CREATE_LABEL();
+    }
+
+    /** Called when a wallpaper is removed: stop editing it, its source is gone. */
+    forget(wallpaper) {
+        if (this._editing?.code === wallpaper.code)
+            this._reset();
+    }
+
+    /** Leaves edit mode and starts over with an empty page. */
+    _reset() {
+        if (this._busy)
+            return;
+        this._stopPlaying();
+        this._source = null;
+        this._sourcePath = null;
+        this._cache.clear();
+        this._variants = defaultVariants();
+        this._selected = this._variants[3];
+        this._nameRow.text = '';
+        this._setEditing(null);
+        this._resetDropZone();
+        this._setLoaded(false);
+        this._picture.set_paintable(null);
     }
 
     _setLoaded(loaded) {
@@ -584,18 +681,39 @@ export class CreatorPage {
             this._toast(_('Two variants can’t share the same hour'));
             return;
         }
-        if (isInstalled(code) && !await confirm(this._window,
+        const editedCode = this._editing?.code ?? null;
+        if (code !== editedCode && isInstalled(code) && !await confirm(this._window,
             format(_('“{name}” Already Exists'), {name}),
             _('The existing wallpaper will be replaced.'), _('Replace')))
             return;
 
         this._busy = true;
         this._createButton.sensitive = false;
+        // Everything is generated aside, then swapped in, so that a failure
+        // leaves the existing wallpaper untouched (and the edited source,
+        // stored in timedDir(), is still readable while generating).
+        const tmpDir = GLib.build_filenamev([backgroundsDir(), `.${code}-timed.tmp`]);
         try {
-            uninstallWallpaper(code);
+            deleteRecursive(tmpDir);
+            GLib.mkdir_with_parents(tmpDir, 0o755);
             const dir = timedDir(code);
-            GLib.mkdir_with_parents(dir, 0o755);
 
+            // Keep the source image and the settings to edit the wallpaper later.
+            const ext = this._sourcePath.match(/\.[^./]+$/)?.[0].toLowerCase() ?? '';
+            const source = `source${ext}`;
+            Gio.File.new_for_path(this._sourcePath).copy(
+                Gio.File.new_for_path(GLib.build_filenamev([tmpDir, source])),
+                Gio.FileCopyFlags.NONE, null, null);
+            writeText(GLib.build_filenamev([tmpDir, 'project.json']), `${JSON.stringify({
+                name,
+                source,
+                transitionMinutes: this._transitionRow.value,
+                variants: this._variants.map(v => Object.fromEntries(
+                    ['label', 'hour', ...TONE_KEYS].map(key => [key, v[key]]))),
+            }, null, 2)}\n`);
+
+            // New file names on each save, so GNOME can't show cached frames.
+            const stamp = GLib.get_real_time().toString(36);
             const full = pixbufToImage(this._source.full);
             const output = new Uint8Array(full.pixels.length);
             const frames = [];
@@ -606,11 +724,19 @@ export class CreatorPage {
                 });
                 // eslint-disable-next-line no-await-in-loop
                 await idle();
-                const path = GLib.build_filenamev([dir, `${code}-${i + 1}.jpeg`]);
+                const file = `${code}-${stamp}-${i + 1}.jpeg`;
                 imageToPixbuf(full, applyTone(full.pixels, full, variant, output))
-                    .savev(path, 'jpeg', ['quality'], ['92']);
-                frames.push(path);
+                    .savev(GLib.build_filenamev([tmpDir, file]), 'jpeg', ['quality'], ['92']);
+                frames.push(GLib.build_filenamev([dir, file]));
             }
+
+            const wasCurrent = editedCode !== null && isCurrent({slideshow: slideshowPath(editedCode)});
+            uninstallWallpaper(code);
+            if (editedCode !== null && editedCode !== code)
+                uninstallWallpaper(editedCode);
+            Gio.File.new_for_path(tmpDir).move(Gio.File.new_for_path(dir),
+                Gio.FileCopyFlags.NONE, null, null);
+            this._sourcePath = GLib.build_filenamev([dir, source]);
 
             const slideshow = writeDynamicWallpaper({
                 code,
@@ -619,14 +745,22 @@ export class CreatorPage {
                 hours,
                 transitionSeconds: this._transitionRow.value * 60,
             });
-            if (this._applyRow.active)
+            // A renamed wallpaper that was in use must not leave a dangling background.
+            const applied = this._applyRow.active || wasCurrent;
+            if (applied)
                 applyWallpaper(slideshow);
-            this._toast(format(this._applyRow.active ? _('“{name}” created and applied') : _('“{name}” created'), {name}));
+            const message = editedCode !== null
+                ? applied ? _('“{name}” saved and applied') : _('“{name}” saved')
+                : applied ? _('“{name}” created and applied') : _('“{name}” created');
+            this._toast(format(message, {name}));
+            this._busy = false;
+            this._setEditing({code, name});
             this._onCreated?.();
         } finally {
+            deleteRecursive(tmpDir);
             this._busy = false;
             this._createButton.sensitive = true;
-            this._createButton.label = CREATE_LABEL();
+            this._createButton.label = this._editing ? SAVE_LABEL() : CREATE_LABEL();
         }
     }
 }

@@ -35,6 +35,29 @@ export function propertiesPath(code) {
     return GLib.build_filenamev([propertiesDir(), `${code}.xml`]);
 }
 
+/** Settings saved next to the frames of a wallpaper made with the Create page. */
+export function projectPath(code) {
+    return GLib.build_filenamev([timedDir(code), 'project.json']);
+}
+
+/**
+ * Reads the project of a generated wallpaper.
+ *
+ * @returns {?{name: string, source: string, transitionMinutes: number, variants: object[]}}
+ *   source is an absolute path, null if the wallpaper has no usable project
+ */
+export function readProject(code) {
+    try {
+        const project = JSON.parse(readText(projectPath(code)));
+        if (!project.source || !Array.isArray(project.variants))
+            return null;
+        project.source = GLib.build_filenamev([timedDir(code), project.source]);
+        return GLib.file_test(project.source, GLib.FileTest.EXISTS) ? project : null;
+    } catch {
+        return null;
+    }
+}
+
 /** Turns a free-form name into a theme code safe for file names. */
 export function sanitizeCode(name) {
     return name.trim()
@@ -145,12 +168,14 @@ export function listInstalled() {
                 seen.add(slideshow);
 
                 const code = fileName.slice(0, -'.xml'.length);
+                const removable = base === user && slideshow === slideshowPath(code);
                 result.push({
                     code,
                     name: tagValue(block, 'name') ?? code,
                     slideshow,
                     propsPath,
-                    removable: base === user && slideshow === slideshowPath(code),
+                    removable,
+                    editable: removable && GLib.file_test(projectPath(code), GLib.FileTest.EXISTS),
                 });
             }
         }

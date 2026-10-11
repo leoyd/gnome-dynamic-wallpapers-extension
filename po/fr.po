@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-gnome-wallpapers\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-11 17:20+0200\n"
+"POT-Creation-Date: 2026-10-11 17:40+0200\n"
 "PO-Revision-Date: 2026-10-11 17:20+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: French\n"
@@ -28,7 +28,9 @@ msgstr "Aucun fond d’écran dynamique"
 
 #: extension/lib/catalog.js:95
 msgid "The “unzip” command is missing, install it to download wallpapers."
-msgstr "La commande « unzip » est introuvable, installez-la pour télécharger des fonds d’écran."
+msgstr ""
+"La commande « unzip » est introuvable, installez-la pour télécharger des "
+"fonds d’écran."
 
 #: extension/lib/catalog.js:101
 msgid "extraction failed"
@@ -38,221 +40,255 @@ msgstr "échec de l’extraction"
 msgid "Invalid archive: {file} not found"
 msgstr "Archive invalide : {file} introuvable"
 
-#: extension/lib/creatorPage.js:25
+#: extension/lib/creatorPage.js:26
 msgid "When this variant is fully shown"
 msgstr "Moment où cette variante est affichée pleinement"
 
-#: extension/lib/creatorPage.js:26
+#: extension/lib/creatorPage.js:27
 msgid "Create Dynamic Wallpaper"
 msgstr "Créer le fond d’écran dynamique"
 
-#: extension/lib/creatorPage.js:69
+#: extension/lib/creatorPage.js:28
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: extension/lib/creatorPage.js:75
 msgid "Create"
 msgstr "Créer"
 
-#: extension/lib/creatorPage.js:97
+#: extension/lib/creatorPage.js:86
+msgid "New Wallpaper"
+msgstr "Nouveau fond d’écran"
+
+#: extension/lib/creatorPage.js:107
 msgid "Source Image"
 msgstr "Image source"
 
-#: extension/lib/creatorPage.js:98
+#: extension/lib/creatorPage.js:108
 msgid ""
 "Each variant is a copy of this image with its own color tone, shown at its "
 "own hour."
-msgstr "Chaque variante est une copie de cette image avec un ton de couleur différent, affichée à son heure."
+msgstr ""
+"Chaque variante est une copie de cette image avec un ton de couleur "
+"différent, affichée à son heure."
 
-#: extension/lib/creatorPage.js:107
-msgid "Drop an Image Here"
-msgstr "Déposez une image ici"
-
-#: extension/lib/creatorPage.js:109
-msgid "JPEG, PNG, WebP… The original resolution is kept."
-msgstr "JPEG, PNG, WebP… La résolution d’origine est conservée."
-
-#: extension/lib/creatorPage.js:115
+#: extension/lib/creatorPage.js:124
 msgid "Choose an Image…"
 msgstr "Choisir une image…"
 
-#: extension/lib/creatorPage.js:141
+#: extension/lib/creatorPage.js:151
 msgid "Images"
 msgstr "Images"
 
-#: extension/lib/creatorPage.js:145
+#: extension/lib/creatorPage.js:155
 msgid "Choose an Image"
 msgstr "Choisir une image"
 
-#: extension/lib/creatorPage.js:159
+#: extension/lib/creatorPage.js:169
 msgid "Only local files are supported"
 msgstr "Seuls les fichiers locaux sont pris en charge"
 
-#: extension/lib/creatorPage.js:165
+#: extension/lib/creatorPage.js:175
 msgid "Unreadable image: {error}"
 msgstr "Image illisible : {error}"
 
-#: extension/lib/creatorPage.js:175
+#: extension/lib/creatorPage.js:196
 msgid "{width} × {height} px · drop another image to replace it"
 msgstr "{width} × {height} px · déposez une autre image pour la remplacer"
 
-#: extension/lib/creatorPage.js:195
-msgid "Preview"
-msgstr "Aperçu"
+#: extension/lib/creatorPage.js:205
+msgid "Drop an Image Here"
+msgstr "Déposez une image ici"
 
-#: extension/lib/creatorPage.js:210
-msgid "Simulate a Day"
-msgstr "Simuler une journée"
+#: extension/lib/creatorPage.js:206
+msgid "JPEG, PNG, WebP… The original resolution is kept."
+msgstr "JPEG, PNG, WebP… La résolution d’origine est conservée."
 
-#: extension/lib/creatorPage.js:211
-msgid "Preview the wallpaper at the chosen time, transitions included"
-msgstr "Prévisualise le fond d’écran à l’heure choisie, transitions comprises"
+#: extension/lib/creatorPage.js:221
+msgid "missing or invalid project"
+msgstr "projet absent ou invalide"
 
-#: extension/lib/creatorPage.js:241
-msgid "Play the Day"
-msgstr "Lire la journée"
+#: extension/lib/creatorPage.js:224
+msgid "Could not open “{name}”: {error}"
+msgstr "Impossible d’ouvrir « {name} » : {error}"
 
-#: extension/lib/creatorPage.js:247
-msgid "Time"
-msgstr "Heure"
-
-#: extension/lib/creatorPage.js:322
-msgid "Variants"
-msgstr "Variantes"
-
-#: extension/lib/creatorPage.js:323
-msgid "Select a variant to preview it and adjust its tone."
-msgstr "Sélectionnez une variante pour la prévisualiser et ajuster son ton."
-
-#: extension/lib/creatorPage.js:327
-msgid "Add a Variant"
-msgstr "Ajouter une variante"
-
-#: extension/lib/creatorPage.js:329
-msgid "Restore Default Variants"
-msgstr "Revenir aux variantes par défaut"
-
-#: extension/lib/creatorPage.js:409
+#: extension/lib/creatorPage.js:230 extension/lib/creatorPage.js:506
 msgid "Variant {number}"
 msgstr "Variante {number}"
 
-#: extension/lib/creatorPage.js:430
-msgid "Variant Tone"
-msgstr "Ton de la variante"
+#: extension/lib/creatorPage.js:254
+msgid "Editing “{name}”"
+msgstr "Modification de « {name} »"
 
-#: extension/lib/creatorPage.js:432
-msgid "Neutral"
-msgstr "Neutre"
+#: extension/lib/creatorPage.js:255
+msgid "Apply After Saving"
+msgstr "Appliquer après l’enregistrement"
 
-#: extension/lib/creatorPage.js:432
-msgid "Reset the tone (original image)"
-msgstr "Réinitialiser le ton (image d’origine)"
-
-#: extension/lib/creatorPage.js:440
-msgid "Name"
-msgstr "Nom"
-
-#: extension/lib/creatorPage.js:444
-msgid "Untitled"
-msgstr "Sans nom"
-
-#: extension/lib/creatorPage.js:453
-msgid "Hour"
-msgstr "Heure"
-
-#: extension/lib/creatorPage.js:465
-msgid "Brightness"
-msgstr "Luminosité"
-
-#: extension/lib/creatorPage.js:465
-msgid "Darkens or lightens the image"
-msgstr "Assombrit ou éclaircit l’image"
-
-#: extension/lib/creatorPage.js:466
-msgid "Contrast"
-msgstr "Contraste"
-
-#: extension/lib/creatorPage.js:467
-msgid "Saturation"
-msgstr "Saturation"
-
-#: extension/lib/creatorPage.js:467
-msgid "0 = black and white"
-msgstr "0 = noir et blanc"
-
-#: extension/lib/creatorPage.js:468
-msgid "Tint Strength"
-msgstr "Intensité de la teinte"
-
-#: extension/lib/creatorPage.js:484 extension/lib/creatorPage.js:500
-msgid "Tint Color"
-msgstr "Couleur de la teinte"
-
-#: extension/lib/creatorPage.js:501
-msgid "Soft light blend: a mid gray is neutral"
-msgstr "Mélange en lumière douce : un gris moyen est neutre"
-
-#: extension/lib/creatorPage.js:506
-msgid "Remove This Variant"
-msgstr "Supprimer cette variante"
-
-#: extension/lib/creatorPage.js:522
-msgid "Tone of “{name}”"
-msgstr "Ton de « {name} »"
-
-#: extension/lib/creatorPage.js:527
-msgid "⚠ Another variant already uses this hour"
-msgstr "⚠ Une autre variante utilise déjà cette heure"
-
-#: extension/lib/creatorPage.js:541
-msgid "Creation"
-msgstr "Création"
-
-#: extension/lib/creatorPage.js:543
-msgid "Wallpaper Name"
-msgstr "Nom du fond d’écran"
-
-#: extension/lib/creatorPage.js:547
-msgid "Transition Length (minutes)"
-msgstr "Durée des transitions (minutes)"
-
-#: extension/lib/creatorPage.js:548
-msgid "Fade between two variants, capped by the gap between their hours"
-msgstr "Fondu entre deux variantes, limité à l’écart entre leurs heures"
-
-#: extension/lib/creatorPage.js:553
+#: extension/lib/creatorPage.js:255 extension/lib/creatorPage.js:650
 msgid "Apply After Creation"
 msgstr "Appliquer après la création"
 
+#: extension/lib/creatorPage.js:292
+msgid "Preview"
+msgstr "Aperçu"
+
+#: extension/lib/creatorPage.js:307
+msgid "Simulate a Day"
+msgstr "Simuler une journée"
+
+#: extension/lib/creatorPage.js:308
+msgid "Preview the wallpaper at the chosen time, transitions included"
+msgstr "Prévisualise le fond d’écran à l’heure choisie, transitions comprises"
+
+#: extension/lib/creatorPage.js:338
+msgid "Play the Day"
+msgstr "Lire la journée"
+
+#: extension/lib/creatorPage.js:344
+msgid "Time"
+msgstr "Heure"
+
+#: extension/lib/creatorPage.js:419
+msgid "Variants"
+msgstr "Variantes"
+
+#: extension/lib/creatorPage.js:420
+msgid "Select a variant to preview it and adjust its tone."
+msgstr "Sélectionnez une variante pour la prévisualiser et ajuster son ton."
+
+#: extension/lib/creatorPage.js:424
+msgid "Add a Variant"
+msgstr "Ajouter une variante"
+
+#: extension/lib/creatorPage.js:426
+msgid "Restore Default Variants"
+msgstr "Revenir aux variantes par défaut"
+
+#: extension/lib/creatorPage.js:527
+msgid "Variant Tone"
+msgstr "Ton de la variante"
+
+#: extension/lib/creatorPage.js:529
+msgid "Neutral"
+msgstr "Neutre"
+
+#: extension/lib/creatorPage.js:529
+msgid "Reset the tone (original image)"
+msgstr "Réinitialiser le ton (image d’origine)"
+
+#: extension/lib/creatorPage.js:537
+msgid "Name"
+msgstr "Nom"
+
+#: extension/lib/creatorPage.js:541
+msgid "Untitled"
+msgstr "Sans nom"
+
+#: extension/lib/creatorPage.js:550
+msgid "Hour"
+msgstr "Heure"
+
+#: extension/lib/creatorPage.js:562
+msgid "Brightness"
+msgstr "Luminosité"
+
+#: extension/lib/creatorPage.js:562
+msgid "Darkens or lightens the image"
+msgstr "Assombrit ou éclaircit l’image"
+
+#: extension/lib/creatorPage.js:563
+msgid "Contrast"
+msgstr "Contraste"
+
 #: extension/lib/creatorPage.js:564
+msgid "Saturation"
+msgstr "Saturation"
+
+#: extension/lib/creatorPage.js:564
+msgid "0 = black and white"
+msgstr "0 = noir et blanc"
+
+#: extension/lib/creatorPage.js:565
+msgid "Tint Strength"
+msgstr "Intensité de la teinte"
+
+#: extension/lib/creatorPage.js:581 extension/lib/creatorPage.js:597
+msgid "Tint Color"
+msgstr "Couleur de la teinte"
+
+#: extension/lib/creatorPage.js:598
+msgid "Soft light blend: a mid gray is neutral"
+msgstr "Mélange en lumière douce : un gris moyen est neutre"
+
+#: extension/lib/creatorPage.js:603
+msgid "Remove This Variant"
+msgstr "Supprimer cette variante"
+
+#: extension/lib/creatorPage.js:619
+msgid "Tone of “{name}”"
+msgstr "Ton de « {name} »"
+
+#: extension/lib/creatorPage.js:624
+msgid "⚠ Another variant already uses this hour"
+msgstr "⚠ Une autre variante utilise déjà cette heure"
+
+#: extension/lib/creatorPage.js:638
+msgid "Creation"
+msgstr "Création"
+
+#: extension/lib/creatorPage.js:640
+msgid "Wallpaper Name"
+msgstr "Nom du fond d’écran"
+
+#: extension/lib/creatorPage.js:644
+msgid "Transition Length (minutes)"
+msgstr "Durée des transitions (minutes)"
+
+#: extension/lib/creatorPage.js:645
+msgid "Fade between two variants, capped by the gap between their hours"
+msgstr "Fondu entre deux variantes, limité à l’écart entre leurs heures"
+
+#: extension/lib/creatorPage.js:661
 msgid "Could not create the wallpaper: {error}"
 msgstr "Échec de la création : {error}"
 
-#: extension/lib/creatorPage.js:578
+#: extension/lib/creatorPage.js:675
 msgid "Give the wallpaper a name"
 msgstr "Donnez un nom au fond d’écran"
 
-#: extension/lib/creatorPage.js:584
+#: extension/lib/creatorPage.js:681
 msgid "Two variants can’t share the same hour"
 msgstr "Deux variantes ne peuvent pas avoir la même heure"
 
-#: extension/lib/creatorPage.js:588
+#: extension/lib/creatorPage.js:686
 msgid "“{name}” Already Exists"
 msgstr "« {name} » existe déjà"
 
-#: extension/lib/creatorPage.js:589
+#: extension/lib/creatorPage.js:687
 msgid "The existing wallpaper will be replaced."
 msgstr "Le fond d’écran existant sera remplacé."
 
-#: extension/lib/creatorPage.js:589
+#: extension/lib/creatorPage.js:687
 msgid "Replace"
 msgstr "Remplacer"
 
-#: extension/lib/creatorPage.js:603
+#: extension/lib/creatorPage.js:721
 msgid "Creating… {current}/{total}"
 msgstr "Création… {current}/{total}"
 
-#: extension/lib/creatorPage.js:624
+#: extension/lib/creatorPage.js:753
+msgid "“{name}” saved and applied"
+msgstr "« {name} » enregistré et appliqué"
+
+#: extension/lib/creatorPage.js:753
+msgid "“{name}” saved"
+msgstr "« {name} » enregistré"
+
+#: extension/lib/creatorPage.js:754
 msgid "“{name}” created and applied"
 msgstr "« {name} » créé et appliqué"
 
-#: extension/lib/creatorPage.js:624
+#: extension/lib/creatorPage.js:754
 msgid "“{name}” created"
 msgstr "« {name} » créé"
 
@@ -260,113 +296,119 @@ msgstr "« {name} » créé"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: extension/lib/galleryPage.js:62
+#: extension/lib/galleryPage.js:64
 msgid "Wallpapers"
 msgstr "Fonds d’écran"
 
-#: extension/lib/galleryPage.js:67
+#: extension/lib/galleryPage.js:69
 msgid "Installed"
 msgstr "Installés"
 
-#: extension/lib/galleryPage.js:68
+#: extension/lib/galleryPage.js:70
 msgid ""
 "Dynamic wallpapers available on this system. They also show up in Settings › "
 "Appearance."
-msgstr "Fonds d’écran dynamiques disponibles sur ce système. Ils apparaissent aussi dans Paramètres › Apparence."
+msgstr ""
+"Fonds d’écran dynamiques disponibles sur ce système. Ils apparaissent aussi "
+"dans Paramètres › Apparence."
 
-#: extension/lib/galleryPage.js:73
+#: extension/lib/galleryPage.js:75
 msgid "Catalog"
 msgstr "Catalogue"
 
-#: extension/lib/galleryPage.js:74
+#: extension/lib/galleryPage.js:76
 msgid "Ready-made wallpapers, downloaded from the project CDN."
 msgstr "Fonds d’écran prêts à l’emploi, téléchargés depuis le CDN du projet."
 
-#: extension/lib/galleryPage.js:103
+#: extension/lib/galleryPage.js:105
 msgid "No Dynamic Wallpapers Installed"
 msgstr "Aucun fond d’écran dynamique installé"
 
-#: extension/lib/galleryPage.js:104
+#: extension/lib/galleryPage.js:106
 msgid "Install one from the catalog or create your own."
 msgstr "Installez-en un depuis le catalogue ou créez le vôtre."
 
-#: extension/lib/galleryPage.js:123
+#: extension/lib/galleryPage.js:125
 msgid "User"
 msgstr "Utilisateur"
 
-#: extension/lib/galleryPage.js:123
+#: extension/lib/galleryPage.js:125
 msgid "System"
 msgstr "Système"
 
-#: extension/lib/galleryPage.js:124
+#: extension/lib/galleryPage.js:126
 msgid "Active"
 msgstr "Actif"
 
-#: extension/lib/galleryPage.js:135
+#: extension/lib/galleryPage.js:137
 msgid "Current Wallpaper"
 msgstr "Fond d’écran actuel"
 
-#: extension/lib/galleryPage.js:139
+#: extension/lib/galleryPage.js:141
 msgid "Apply"
 msgstr "Appliquer"
 
-#: extension/lib/galleryPage.js:145
+#: extension/lib/galleryPage.js:147
 msgid "“{name}” applied"
 msgstr "« {name} » appliqué"
 
-#: extension/lib/galleryPage.js:154 extension/lib/galleryPage.js:162
+#: extension/lib/galleryPage.js:156
+msgid "Edit"
+msgstr "Modifier"
+
+#: extension/lib/galleryPage.js:167 extension/lib/galleryPage.js:175
 msgid "Remove"
 msgstr "Supprimer"
 
-#: extension/lib/galleryPage.js:160
+#: extension/lib/galleryPage.js:173
 msgid "Remove “{name}”?"
 msgstr "Supprimer « {name} » ?"
 
-#: extension/lib/galleryPage.js:161
+#: extension/lib/galleryPage.js:174
 msgid "The images and files of this wallpaper will be deleted."
 msgstr "Les images et fichiers de ce fond d’écran seront supprimés."
 
-#: extension/lib/galleryPage.js:167
+#: extension/lib/galleryPage.js:181
 msgid "“{name}” removed"
 msgstr "« {name} » supprimé"
 
-#: extension/lib/galleryPage.js:169
+#: extension/lib/galleryPage.js:183
 msgid "Could not remove: {error}"
 msgstr "Suppression impossible : {error}"
 
-#: extension/lib/galleryPage.js:194
+#: extension/lib/galleryPage.js:208
 msgid "Code: {code}"
 msgstr "Code : {code}"
 
-#: extension/lib/galleryPage.js:195
+#: extension/lib/galleryPage.js:209
 msgid "⚠ over 500 MB"
 msgstr "⚠ plus de 500 Mo"
 
-#: extension/lib/galleryPage.js:207
+#: extension/lib/galleryPage.js:221
 msgid "Credits: {url}"
 msgstr "Crédits : {url}"
 
-#: extension/lib/galleryPage.js:220 extension/lib/galleryPage.js:228
+#: extension/lib/galleryPage.js:234 extension/lib/galleryPage.js:242
 msgid "Install"
 msgstr "Installer"
 
-#: extension/lib/galleryPage.js:228
+#: extension/lib/galleryPage.js:242
 msgid "Reinstall"
 msgstr "Réinstaller"
 
-#: extension/lib/galleryPage.js:235
+#: extension/lib/galleryPage.js:249
 msgid "Connecting…"
 msgstr "Connexion…"
 
-#: extension/lib/galleryPage.js:242
+#: extension/lib/galleryPage.js:256
 msgid "Downloading…"
 msgstr "Téléchargement…"
 
-#: extension/lib/galleryPage.js:249
+#: extension/lib/galleryPage.js:263
 msgid "“{name}” installed"
 msgstr "« {name} » installé"
 
-#: extension/lib/galleryPage.js:253
+#: extension/lib/galleryPage.js:267
 msgid "Could not install “{name}”: {error}"
 msgstr "Échec de l’installation de « {name} » : {error}"
 
